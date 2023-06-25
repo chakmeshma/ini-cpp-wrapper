@@ -43,3 +43,17 @@ std::string iniReaderGetStringDefault(void* iniReader, const char* section, cons
 
 	return reader->Get<std::string>(section, name, defaultValue);
 }
+
+float iniReaderGetFloatDefault(void* iniReader, const char* section, const char* name, float defaultValue) {
+	INIReader* reader = reinterpret_cast<INIReader*>(iniReader);
+
+	double defaultDouble = defaultValue;
+
+	return reader->Get<float>(section, name, defaultDouble);
+}
+
+std::vector<float> iniReaderGetFloatVector(void* iniReader, const char* section, const char* name) {
+	INIReader* reader = reinterpret_cast<INIReader*>(iniReader);
+
+	return reader->GetVector<float>(section, name);
+}
